@@ -240,7 +240,7 @@ class NumerosPacienteController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('numerospaciente_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar teléfono', 'attr'=>array('class'=>'btn btn-primary entity-submit pull-left')))
+            ->add('submit', 'submit', array('label' => 'Eliminar teléfono', 'attr'=>array('class'=>'btn btn-warning entity-submit pull-left')))
             ->getForm()
         ;
     }

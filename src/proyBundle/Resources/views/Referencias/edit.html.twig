@@ -2,20 +2,24 @@
 {% block title %}Editar - Referencia Medica{% endblock %}
 
 {% block body -%}
-    <h1>Editar Referencia</h1>
+    <h1 align=center>Editar Referencia</h1>
+    
     {{ form(delete_form) }}
-         <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     <br><br>
+    
     {{ form(edit_form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('referencias') }}">
-           <br><br> Ir a lista de referencias
-        </a>
-    </li>
+            <li>
+                <a href="{{ path('referencias') }}">
+                   <br><br> Ir a lista de referencias
+                </a>
+            </li>
     
-</ul>
+        </ul>
 {% endblock %}

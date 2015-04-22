@@ -4,17 +4,19 @@
 
 
 {% block body -%}
-    <h1>Crear historia clinica</h1>
-         <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    <h1 align=center>Crear historia clinica</h1>
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     {{ form(form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('historiaclinica') }}">
-           <br><br> Ir a lista de historias clinicas
-        </a>
-    </li>
-</ul>
+            <li>
+                <a href="{{ path('historiaclinica') }}">
+                    <br><br> Ir a lista de historias clinicas
+                </a>
+            </li>
+        </ul>
 {% endblock %}

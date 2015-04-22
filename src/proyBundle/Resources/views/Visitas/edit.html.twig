@@ -4,20 +4,24 @@
 
 
 {% block body -%}
-    <h1>Visitas edit</h1>
+    <h1 align=center>Editar Visita</h1>
+    
     {{ form(delete_form) }}
-     <div align=right>
-    {{ "now"|date("d/m/Y H:i ", "America/Caracas")}}
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y H:i ", "America/Caracas")}}
     </div>
+    
     <br><br>
+    
     {{ form(edit_form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('visitas') }}">
-           <br><br> Ir a lista de visitas
-        </a>
-    </li>
+            <li>
+                <a href="{{ path('visitas') }}">
+                   <br><br> Ir a lista de visitas
+                </a>
+            </li>
     
-</ul>
+        </ul>
 {% endblock %}

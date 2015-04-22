@@ -250,7 +250,7 @@ class HistoriaClinicaController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('historiaclinica_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Borrar Historia', 'attr'=>array('class'=>'btn btn-primary entity-submit pull-left')))
+            ->add('submit', 'submit', array('label' => 'Borrar Historia', 'attr'=>array('class'=>'btn btn-warning entity-submit pull-left')))
             ->getForm()
         ;
     }

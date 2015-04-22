@@ -4,20 +4,20 @@
 
 
 {% block body -%}
-    <h1>Telefonos de pacientes</h1>
+    <h1 align=center>Telefonos de pacientes</h1>
+     
      <div align=right>
          {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
 
      <ul>
-        <li>
-            <a href="{{ path('numerospaciente_new') }}">
-                Agregar nuevo número
-            </a>
-        </li>
+        <a href="{{ path('numerospaciente_new') }}">
+            <button class="btn btn-success">Agregar nuevo número</button>
+        </a>
+        
     </ul>
 
-    <table class="records_list" cellspacing="10" cellpadding="10" border="3">
+    <table class="table table-hover table-bordered" cellspacing="10" cellpadding="10" border="3">
         <thead>
             <tr>
                 <th>Paciente</th>

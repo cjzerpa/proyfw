@@ -4,21 +4,23 @@
 
 
 {% block body -%}
-    <h1>Editar Empleado</h1>
+    <h1 align=center>Editar Empleado</h1>
 
     {{ form(delete_form) }}
-         <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     <br><br>
+    
     {{ form(edit_form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('empleado') }}">
-            <br><br>Ir a lista de empleados
-        </a>
-    </li>
-   
-</ul>
+             <li>
+                 <a href="{{ path('empleado') }}">
+                     <br><br>Ir a lista de empleados
+                </a>
+            </li>
+        </ul>
 {% endblock %}

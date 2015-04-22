@@ -3,17 +3,19 @@
 
 
 {% block body -%}
-    <h1>Agregar número de teléfono</h1>
-     <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    <h1 align=center>Agregar número de teléfono</h1>
+     
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     {{ form(form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('numerospaciente') }}">
-            <br><br>Ver telefonos existentes
-        </a>
-    </li>
-</ul>
+            <li>
+                <a href="{{ path('numerospaciente') }}">
+                    <br><br>Ver telefonos existentes
+                </a>
+            </li>
+        </ul>
 {% endblock %}

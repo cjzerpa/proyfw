@@ -249,7 +249,7 @@ class PacienteController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('paciente_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar Paciente', 'attr'=>array('class'=>'btn btn-primary entity-submit pull-left')))
+            ->add('submit', 'submit', array('label' => 'Eliminar Paciente', 'attr'=>array('class'=>'btn btn-warning entity-submit pull-left')))
             ->getForm()
         ;
     }

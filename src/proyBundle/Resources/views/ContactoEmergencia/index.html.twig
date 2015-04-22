@@ -4,16 +4,17 @@
 
 
 {% block body -%}
-    <h1>Contactos de Emergencia</h1>
-     <div align=right>
+    <h1 align=center>Contactos de Emergencia</h1>
+    
+    <div align=right>
          {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     <ul>
-        <li>
-            <a href="{{ path('contactoemergencia_new') }}">
-                Agregar un nuevo contacto
-            </a>
-        </li>
+        
+        <a href="{{ path('contactoemergencia_new') }}">
+            <button class="btn btn-success">Agregar un nuevo contacto</button>
+        </a>
     </ul>
 
     <table class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%">

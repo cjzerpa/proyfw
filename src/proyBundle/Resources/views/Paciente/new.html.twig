@@ -4,17 +4,18 @@
 
 
 {% block body -%}
-    <h1>Nuevo Paciente</h1>
-       <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    <h1 align=center>Nuevo Paciente</h1>
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     {{ form(form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('paciente') }}">
-         <br><br>Regresar a los pacientes
-        </a>
-    </li>
-</ul>
+            <li>
+                <a href="{{ path('paciente') }}">
+                 <br><br>Regresar a los pacientes
+                </a>
+            </li>
+        </ul>
 {% endblock %}

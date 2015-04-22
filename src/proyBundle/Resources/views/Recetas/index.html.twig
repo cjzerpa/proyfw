@@ -4,16 +4,17 @@
 
 
 {% block body -%}
-    <h1>Lista de Recetas</h1>
-     <div align=right>
-         {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    <h1 align=center>Lista de Recetas</h1>
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     <ul>
-        <li>
-            <a href="{{ path('recetas_new') }}">
-                Crear nueva receta
-            </a>
-        </li>
+        <a href="{{ path('recetas_new') }}">
+            <button class="btn btn-success">Crear nueva receta</button>
+        </a>
+        
     </ul>
 
     <table class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%">

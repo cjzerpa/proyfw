@@ -6,15 +6,8 @@
 
 {% block body -%}
     
-    <h1>Lista de Pacientes</h1>
+    <h1 align=center>Lista de Pacientes</h1>
 
-<div align=center>
- {% image '@proyBundle/Resources/public/images/fondo.jpeg' filter='jpegoptim' output='/images/fondo.jpeg' %}
-    <img src="{{ asset_url}}" alt="Fondo"/> 
-{%endimage%}
-    
-
-</div>
 
 
     <div align=right>
@@ -22,11 +15,11 @@
     </div>
 
     <ul>
-        <li>
-            <a href="{{ path('paciente_new') }}">
-                Ingresar nuevo paciente
-            </a>
-        </li>
+        
+        <a href="{{ path('paciente_new') }}">
+            <button class="btn btn-success">Agregar Paciente</button>
+        </a>
+
     </ul>
 
    
@@ -88,12 +81,10 @@
                 "searching": false,
                 "ordering": false
             } );
-
             $(document).ready(function() 
             {
                 $('#example').dataTable();
             } );
-
         </script>
 
 
@@ -129,4 +120,3 @@
     {% endblock %}
 
   
-

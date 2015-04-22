@@ -4,17 +4,17 @@
 
 
 {% block body -%}
-    <h1>Historias Clinicas</h1>
+    <h1 align=center>Historias Clinicas</h1>
      <div align=right>
          {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     <ul>
-        <li>
-            <a href="{{ path('historiaclinica_new') }}">
-                Hacer una historia clinica
-            </a>
-        </li>
+       <a href="{{ path('historiaclinica_new') }}">
+            <button class="btn btn-success">Nueva historia clinica</button>
+        </a>
     </ul>
+    
     <table class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%" >
         <thead>
             <tr>

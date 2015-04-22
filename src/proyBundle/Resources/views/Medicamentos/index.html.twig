@@ -4,16 +4,17 @@
 
 
 {% block body -%}
-    <h1>Lista de Medicamentos</h1>
-     <div align=right>
-         {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    <h1 align=center>Lista de Medicamentos</h1>
+     
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     <ul>
-        <li>
-            <a href="{{ path('medicamentos_new') }}">
-                Agregar Medicamento
-            </a>
-        </li>
+        <a href="{{ path('medicamentos_new') }}">
+            <button class="btn btn-success">Agregar Medicamento</button>
+        </a>
+   
     </ul>
 
     <table class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%">

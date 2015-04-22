@@ -4,14 +4,17 @@
 
 
 {% block body -%}
-    <h1>Paciente</h1>
+    <h1 align=center>Paciente</h1>
+    
     {{ form(delete_form) }}
-      <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     <br><br><br>
    
-    <table class="record_properties" cellspacing="10" cellpadding="10" border="3" >
+    <table class="table table-bordered" cellspacing="0" cellpadding="0">
         <tbody>
             <tr>
                 <th>Nombre</th>

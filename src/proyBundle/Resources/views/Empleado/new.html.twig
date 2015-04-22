@@ -3,18 +3,20 @@
 
 
 {% block body -%}
-    <h1>Agregar Empleado</h1>
-         <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    <h1 align=center>Agregar Empleado</h1>
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
     </div>
+    
     {{ form(form)}}
 
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('empleado') }}">
-            <br><br>Ir a la lista de empleados
-        </a>
-    </li>
-</ul>
+            <li>
+                <a href="{{ path('empleado') }}">
+                    <br><br>Ir a la lista de empleados
+                </a>
+            </li>
+        </ul>
 {% endblock %}

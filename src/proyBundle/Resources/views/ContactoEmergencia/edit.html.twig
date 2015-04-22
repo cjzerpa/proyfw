@@ -3,21 +3,24 @@
 
 
 {% block body -%}
-    <h1>Editar un contacto de emergencia</h1>
+    <h1 align=center>Editar un contacto de emergencia</h1>
+    
     {{ form(delete_form) }}
-         <div align=right>
-    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    
+    <div align=right>
+        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}
     </div>
+    
     <br><br>
+    
     {{ form(edit_form) }}
 
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('contactoemergencia') }}">
-            <br><br>Ver todos los contactos de emergencia
-        </a>
-        </a>
-    </li>
-    
-</ul>
+            <li>
+                <a href="{{ path('contactoemergencia') }}">
+                    <br><br>Ver todos los contactos de emergencia
+                </a>
+            </li>
+        </ul>
+        
 {% endblock %}
