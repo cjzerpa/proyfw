@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+{% block title %}Nuevo - Contacto Emergencia{% endblock %}
+
+
+{% block body -%}
+    <h1>Agregar un contacto de emergencia</h1>
+         <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('contactoemergencia') }}">
+            <br><br>Ver todos los contactos
+        </a>
+    </li>
+</ul>
+{% endblock %}

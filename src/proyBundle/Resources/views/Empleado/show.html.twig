@@ -1,0 +1,71 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Empleado{% endblock %}
+
+
+{% block body -%}
+    <h1>Empleado</h1>
+    {{ form(delete_form) }}
+         <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    <br><br>
+    <table class="record_properties" ellspacing="10" cellpadding="10" border="3" >
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido</th>
+                <td>{{ entity.apellido }}</td>
+            </tr>
+            <tr>
+                <th>User</th>
+                <td>{{ entity.user }}</td>
+            </tr>
+            
+            <tr>
+                <th>Fecha de nacimiento</th>
+                <td>{{ entity.fechaNacimiento|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Numero de seguro</th>
+                <td>{{ entity.numeroSeguro }}</td>
+            </tr>
+            <tr>
+                <th>Direccion</th>
+                <td>{{ entity.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ entity.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Fecha inicio</th>
+                <td>{{ entity.fechaInicio|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Cargo</th>
+                <td>{{ entity.cargo }}</td>
+            </tr>
+        </tbody>
+        <br><br>
+    </table>
+
+        <ul class="record_actions">
+
+        <li>
+        <a href="{{ path('empleado_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('empleado') }}">
+            Volver a lista de empleados
+        </a>
+    </li>
+    
+    
+</ul>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Medicamento{% endblock %}
+
+
+{% block body -%}
+    <h1>Medicamentos</h1>
+    {{ form(delete_form) }}
+         <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    <br><br>
+    <table class="record_properties" cellspacing="10" cellpadding="10" border="3">
+        <tbody>
+            
+            <tr>
+                <th>Medicamento</th>
+                <td>{{ entity.medicamento }}</td>
+            </tr>
+            <tr>
+                <th>Condicion</th>
+                <td>{{ entity.condicion }}</td>
+            </tr>
+            <tr>
+                <th>Fechaactualizacion</th>
+                <td>{{ entity.fechaActualizacion|date('Y-m-d') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+        <ul class="record_actions">
+        <li>
+        <a href="{{ path('medicamentos_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('medicamentos') }}">
+            Ir a lista de Medicamentos
+        </a>
+    </li>
+    
+
+</ul>
+{% endblock %}

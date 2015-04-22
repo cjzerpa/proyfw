@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+{% block title %}Lista - Alergias{% endblock %}
+
+
+{% block body -%}
+    <h1>Listado de Alergias</h1>
+     <div align=right>
+    {{ "now"|date("d/m/Y H:i ", "America/Caracas")}}
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('alergias_new') }}">
+                Agregar alergia
+            </a>
+        </li>
+    </ul>
+
+    <table class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Alergia</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.getHistoriaClinica() }}</td>
+                <td>{{ entity.alergia }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('alergias_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('alergias_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('historiaclinica') }}">
+                Ver historias clinicas
+            </a>
+        </li>
+    </ul>
+
+        
+    {% endblock %}

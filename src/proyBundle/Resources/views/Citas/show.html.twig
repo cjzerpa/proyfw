@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+{% block title %}Cita Medica{% endblock %}
+
+
+{% block body -%}
+    <h1>Cita</h1>
+
+     {{ form(delete_form) }}
+          <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+     <br><br>
+    <table class="record_properties" ellspacing="10" cellpadding="10" border="3">
+        <tbody>
+            <tr>
+                <th>Paciente</th>
+                <td>{{ entity.getPaciente}}</td>
+            </tr>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.fecha|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Hora</th>
+                 <td>{{ entity.hora|date('H:i:s') }}</td>
+           </tr>
+            <tr>
+                <th>Motivo</th>
+                <td>{{ entity.motivo }}</td>
+            </tr>
+        </tbody>
+        <br><br>
+    </table>
+
+        <ul class="record_actions">
+    
+    <li>
+        <a href="{{ path('citas_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('citas') }}">
+            Ir a lista de citas
+        </a>
+    </li>
+   
+</ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+{% block title %}Editar - Historia Clinica{% endblock %}
+
+
+{% block body -%}
+    <h1>Editar Historia Clinica</h1>
+    {{ form(delete_form) }}
+         <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    <br><br>
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('historiaclinica') }}">
+            <br><br>Ir a lista de Historias Clinicas
+        </a>
+    </li>
+    
+</ul>
+{% endblock %}

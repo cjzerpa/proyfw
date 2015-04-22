@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+{% block title %}Lista - Citas Medicas{% endblock %}
+
+
+{% block body -%}
+    <h1>Citas Medicas</h1>
+    <div align=right>
+         {{ "now"|date("d/m/Y H:i ", "America/Caracas")}}
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('citas_new') }}">
+                Nueva Cita
+            </a>
+        </li>
+    </ul>
+
+    <table class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Motivo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.getPaciente()}}</td>
+                <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.hora %}{{ entity.hora|date('H:i:s') }}{% endif %}</td>
+                <td>{{ entity.motivo }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('citas_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('citas_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('paciente') }}">
+                Ir a lista de pacientes
+            </a>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <a href="{{ path('historiaclinica') }}">
+                Ver historias clinicas
+            </a>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <a href="{{ path('empleado') }}">
+                Gestionar empleados
+            </a>
+        </li>
+    </ul>
+
+        
+    {% endblock %}

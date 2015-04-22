@@ -1,0 +1,132 @@
+{% extends '::base.html.twig' %}
+
+
+{% block title %}Lista - Pacientes{% endblock %}
+
+
+{% block body -%}
+    
+    <h1>Lista de Pacientes</h1>
+
+<div align=center>
+ {% image '@proyBundle/Resources/public/images/fondo.jpeg' filter='jpegoptim' output='/images/fondo.jpeg' %}
+    <img src="{{ asset_url}}" alt="Fondo"/> 
+{%endimage%}
+    
+
+</div>
+
+
+    <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('paciente_new') }}">
+                Ingresar nuevo paciente
+            </a>
+        </li>
+    </ul>
+
+   
+
+    <table id="example" class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nombre </th>
+                <th>Apellido</th>
+                <th>CI</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.apellido }}</td>
+                <td>{{ entity.cedula }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('paciente_show', { 'id': entity.id }) }}">mostrar</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('paciente_edit', { 'id': entity.id }) }}">editar</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('paciente_show', { 'id': entity.id }) }}">eliminar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Esto deberia mostrar el DataTable -->
+    <!-- ********************************* -->
+
+   {% javascripts %}
+
+       {% stylesheets %}
+            <!-- DataTables CSS -->
+            <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.6/css/jquery.dataTables.css">
+
+       {% endstylesheets %}
+  
+        <!-- jQuery -->
+        <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+          
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.6/js/jquery.dataTables.js"></script>
+
+        <script language="javascript">
+            $.extend( $.fn.dataTable.defaults, 
+            {
+                "searching": false,
+                "ordering": false
+            } );
+
+            $(document).ready(function() 
+            {
+                $('#example').dataTable();
+            } );
+
+        </script>
+
+
+   {% endjavascripts %}
+
+
+   
+
+    <ul>
+        <li>
+            <a href="{{ path('citas') }}">
+                Ir a citas
+            </a>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <a href="{{ path('historiaclinica') }}">
+                Ver historias clinicas
+            </a>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <a href="{{ path('empleado') }}">
+                Gestionar empleados
+            </a>
+        </li>
+    </ul>
+
+    {% endblock %}
+
+  
+

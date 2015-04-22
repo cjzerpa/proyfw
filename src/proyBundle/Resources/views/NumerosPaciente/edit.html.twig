@@ -1,0 +1,21 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Editar - Numero Paciente{% endblock %}
+
+{% block body -%}
+    <h1>Editar Número</h1>
+    {{ form(delete_form) }}
+         <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    <br><br>
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('numerospaciente') }}">
+            <br><br>Ver Números
+        </a>
+    </li>
+</ul>
+{% endblock %}

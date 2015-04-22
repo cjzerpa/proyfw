@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+{% block title %}Nueva - Referencia Medica{% endblock %}
+
+{% block body -%}
+    <h1>Crear nueva Referencia Medica</h1>
+         <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('referencias') }}">
+           <br><br> Ir a lista de referencias
+        </a>
+    </li>
+</ul>
+{% endblock %}

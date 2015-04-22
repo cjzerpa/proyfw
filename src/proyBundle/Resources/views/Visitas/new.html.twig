@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Nueva - Visita{% endblock %}
+
+
+{% block body -%}
+    <h1>Nueva Visita</h1>
+      <div align=right>
+    {{ "now"|date("d/m/Y H:i ", "America/Caracas")}}
+    </div>
+    {{ form(form) }}
+   
+    <br>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('visitas') }}">
+           <br><br> Ir a la lista de visitas
+        </a>
+    </li>
+</ul>
+{% endblock %}

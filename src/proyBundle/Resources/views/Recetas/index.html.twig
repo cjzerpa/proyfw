@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Lista - Recetas{% endblock %}
+
+
+{% block body -%}
+    <h1>Lista de Recetas</h1>
+     <div align=right>
+         {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('recetas_new') }}">
+                Crear nueva receta
+            </a>
+        </li>
+    </ul>
+
+    <table class="table table-hover table-bordered" cellspacing="0" cellpading="0" width="100%">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Nombre</th>
+                <th>Instrucciones</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.getVisita().getHistoriaClinica().getPaciente}}</td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.instrucciones }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('recetas_show', { 'id': entity.id }) }}">mostrar</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('recetas_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('visitas') }}">
+                Ir a lista de visitas
+            </a>
+        </li>
+    </ul>
+        
+    {% endblock %}

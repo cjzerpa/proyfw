@@ -1,0 +1,334 @@
+<?php
+
+namespace proyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Empleado
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="proyBundle\Entity\EmpleadoRepository")
+ */
+class Empleado
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="user", type="string", length=50)
+     */
+    private $user;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pass", type="string", length=50)
+     */
+    private $pass;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=100)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellido", type="string", length=100)
+     */
+    private $apellido;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_nacimiento", type="date")
+     */
+    private $fechaNacimiento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="seguro_social", type="string", length=10)
+     */
+    private $seguroSocial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="direccion", type="string", length=255)
+     */
+    private $direccion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_inicio", type="date")
+     */
+    private $fechaInicio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cargo", type="string", length=50)
+     */
+    private $cargo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefono", type="string", length=100)
+     */
+    private $telefono;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param string $user
+     * @return Empleado
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return string 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set pass
+     *
+     * @param string $pass
+     * @return Empleado
+     */
+    public function setPass($pass)
+    {
+        $this->pass = $pass;
+
+        return $this;
+    }
+
+    /**
+     * Get pass
+     *
+     * @return string 
+     */
+    public function getPass()
+    {
+        return $this->pass;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Empleado
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set apellido
+     *
+     * @param string $apellido
+     * @return Empleado
+     */
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
+
+        return $this;
+    }
+
+    /**
+     * Get apellido
+     *
+     * @return string 
+     */
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
+    /**
+     * Set fechaNacimiento
+     *
+     * @param \DateTime $fechaNacimiento
+     * @return Empleado
+     */
+    public function setFechaNacimiento($fechaNacimiento)
+    {
+        $this->fechaNacimiento = $fechaNacimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaNacimiento
+     *
+     * @return \DateTime 
+     */
+    public function getFechaNacimiento()
+    {
+        return $this->fechaNacimiento;
+    }
+
+    /**
+     * Set seguroSocial
+     *
+     * @param string $seguroSocial
+     * @return Empleado
+     */
+    public function setSeguroSocial($seguroSocial)
+    {
+        $this->seguroSocial = $seguroSocial;
+
+        return $this;
+    }
+
+    /**
+     * Get seguroSocial
+     *
+     * @return string 
+     */
+    public function getSeguroSocial()
+    {
+        return $this->seguroSocial;
+    }
+
+    /**
+     * Set direccion
+     *
+     * @param string $direccion
+     * @return Empleado
+     */
+    public function setDireccion($direccion)
+    {
+        $this->direccion = $direccion;
+
+        return $this;
+    }
+
+    /**
+     * Get direccion
+     *
+     * @return string 
+     */
+    public function getDireccion()
+    {
+        return $this->direccion;
+    }
+
+    /**
+     * Set fechaInicio
+     *
+     * @param \DateTime $fechaInicio
+     * @return Empleado
+     */
+    public function setFechaInicio($fechaInicio)
+    {
+        $this->fechaInicio = $fechaInicio;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaInicio
+     *
+     * @return \DateTime 
+     */
+    public function getFechaInicio()
+    {
+        return $this->fechaInicio;
+    }
+
+    /**
+     * Set cargo
+     *
+     * @param string $cargo
+     * @return Empleado
+     */
+    public function setCargo($cargo)
+    {
+        $this->cargo = $cargo;
+
+        return $this;
+    }
+
+    /**
+     * Get cargo
+     *
+     * @return string 
+     */
+    public function getCargo()
+    {
+        return $this->cargo;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     * @return Empleado
+     */
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+
+        return $this;
+    }
+
+    /**
+     * Get telefono
+     *
+     * @return string 
+     */
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+}

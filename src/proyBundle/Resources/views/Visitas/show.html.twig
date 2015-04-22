@@ -1,0 +1,85 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Visita{% endblock %}
+
+
+{% block body -%}
+    <h1>Visitas</h1>
+
+    {{ form(delete_form) }}
+     <div align=right>
+    {{ "now"|date("d/m/Y H:i ", "America/Caracas")}}
+    </div>
+    <br><br>
+    <table class="record_properties" cellspacing="10" cellpadding="10" border="3">
+        <tbody>
+            <tr>
+                <th>Fecha</th>
+                <td>{{ entity.fecha|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Hora</th>
+                <td>{{ entity.hora|date('H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Altura</th>
+                <td>{{ entity.altura }}</td>
+            </tr>
+            <tr>
+                <th>Peso</th>
+                <td>{{ entity.peso }}</td>
+            </tr>
+            <tr>
+                <th>Presion arterial</th>
+                <td>{{ entity.presionArterial }}</td>
+            </tr>
+            <tr>
+                <th>Frecuencia cardiaca</th>
+                <td>{{ entity.frecuenciaCardiaca }}</td>
+            </tr>
+            <tr>
+                <th>Temperatura</th>
+                <td>{{ entity.temperatura }}</td>
+            </tr>
+            <tr>
+                <th>Diagnostico</th>
+                <td>{{ entity.diagnostico }}</td>
+            </tr>
+            <tr>
+                <th>Medico</th>
+                <td>{{ entity.medico }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <ul class="record_actions">
+    <li>
+        <a href="{{ path('visitas_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+            <li>
+        <a href="{{ path('recetas', { 'id': entity.id }) }}">
+            Ver recetas
+        </a>
+        <li>
+        <a href="{{ path('referencias', { 'id': entity.id }) }}">
+            Ver referencias
+        </a>
+
+    <li>
+        <a href="{{ path('historiaclinica') }}">
+            Ir a lista de historias clinicas
+        </a>
+    </li>
+    </li>
+        <li>
+            <a href="{{ path('visitas') }}">
+                Regresar a visitas
+            </a>
+        </li>
+    
+    
+    </ul>
+    
+
+{% endblock %}

@@ -1,0 +1,32 @@
+security:
+    providers:
+        in_memory:
+            memory: 
+                users:
+                    cjzerpa:
+                        password: $2a$12$cAJ3ADSVZ/deyT0jhgdN3uaLWrAEIPrFrZxPngHUXvFt0qofjj82O
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: $2a$12$yj/d7TRXWFniudcQYA1Eduv5a/OXx02MoLgYxAd38gs8gSZVJwRce
+                        roles: 'ROLE_ADMIN'
+
+    encoders: 
+        Symfony\Component\Security\Core\User\User: 
+            algorithm: bcrypt
+            cost: 12
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        default:
+            anonymous: ~
+            http_basic: ~
+
+
+
+    access_control:
+        #require ROLE_ADMIN for /ROLE_ADMIN
+        - { path: ^/secure, roles: ROLE_ADMIN, requires_channel: https }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

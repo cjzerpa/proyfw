@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+{% block title %}Editar - Alergia{% endblock %}
+
+{% block body -%}
+    <h1>Editar Alergia</h1>
+    {{ form(delete_form) }}
+    <br><br>
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('alergias') }}">
+            <br><br>Ir a la lista de alergias
+        </a>
+    </li>
+    
+</ul>
+{% endblock %}

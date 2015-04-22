@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+{% block title %}Nueva - Alergia{% endblock %}
+
+{% block body -%}
+    <h1>Alergias creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('alergias') }}">
+           <br><br>Ir a lista de alergias
+        </a>
+    </li>
+</ul>
+{% endblock %}

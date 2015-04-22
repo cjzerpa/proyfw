@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Historia Clinica{% endblock %}
+
+
+{% block body -%}
+    <h1>Historia Clinica</h1>
+
+    {{ form(delete_form) }}
+         <div align=right>
+    {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
+    </div>
+    <br><br>
+    <table class="record_properties" cellspacing="10" cellpadding="10" border="3" >
+        <tbody>
+            <tr>
+                <th>Paciente</th>
+                <td>{{ entity.getPaciente() }}</td>
+            </tr>
+            <tr>
+                <th>Consumo de tabaco</th>
+                <td>{{ entity.tabaco }}</td>
+            </tr>
+            <tr>
+                <th>Consumo de alcohol</th>
+                <td>{{ entity.alcohol }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de actualizacion</th>
+                <td>{{ entity.fechaActualizacion|date('Y-m-d') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('historiaclinica_edit', { 'id': entity.id }) }}">
+            Editar
+        </a>
+        <li>
+        <a href="{{ path('medicamentos', { 'id': entity.id }) }}">
+            Ver medicamentos
+        </a>
+        <li>
+        <a href="{{ path('alergias', { 'id': entity.id }) }}">
+            Ver alergias
+        </a>
+        <li>
+        <a href="{{ path('visitas', { 'id': entity.id }) }}">
+            Ver visitas
+        </a>
+
+    <li>
+        <a href="{{ path('historiaclinica') }}">
+            Ir a lista de historias clinicas
+        </a>
+    </li>
+    
+</ul>
+{% endblock %}

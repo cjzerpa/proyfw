@@ -1,0 +1,14 @@
+zenva_workout:
+    resource: "@ZenvaWorkoutBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+proy:
+    resource: "@proyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
