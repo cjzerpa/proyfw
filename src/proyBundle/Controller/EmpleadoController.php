@@ -9,10 +9,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use proyBundle\Entity\Empleado;
 use proyBundle\Form\EmpleadoType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Empleado controller.
- *
+ * @Security("has_role('ROLE_ADMIN')")
  * @Route("/empleado")
  */
 class EmpleadoController extends Controller
@@ -76,7 +77,7 @@ class EmpleadoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr'=>array('class'=>'btn btn-primary entity-submit pull-left')));
+        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -165,7 +166,7 @@ class EmpleadoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr'=>array('class'=>'btn btn-primary entity-submit pull-left')));
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -240,7 +241,7 @@ class EmpleadoController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('empleado_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar', 'attr'=>array('class'=>'btn btn-warning entity-submit pull-left')))
+            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

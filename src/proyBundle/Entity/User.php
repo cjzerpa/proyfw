@@ -1,0 +1,253 @@
+<?php
+
+namespace proyBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+
+/**
+ * @ORM\Table(name="app_users")
+ * @ORM\Entity(repositoryClass="proyBundle\Entity\UserRepository")
+ */
+class User implements UserInterface, \Serializable
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=64)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     */
+    private $email;
+
+    /**
+     * se utilizó user_roles para no hacer conflicto al aplicar ->toArray en getRoles()
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(name="user_role",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     * )
+     */
+    protected $user_roles;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Empleado", mappedBy="user", cascade={"persist"}, orphanRemoval=true)
+     **/
+    private $empleado;
+
+    public function __construct()
+    {
+        $this->user_roles = new \Doctrine\Common\Collections\ArrayCollection();
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid(null, true));
+    }
+
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * __toString
+     *
+     * @return string 
+     */
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
+
+    /**
+     * Add user_roles
+     *
+     * @param \proyBundle\Entity\Role $userRoles
+     * @return User
+     */
+    public function addUserRole(\proyBundle\Entity\Role $userRoles)
+    {
+        $this->user_roles[] = $userRoles;
+
+        return $this;
+    }
+
+    /**
+     * Remove user_roles
+     *
+     * @param \proyBundle\Entity\Role $userRoles
+     */
+    public function removeUserRole(\proyBundle\Entity\Role $userRoles)
+    {
+        $this->user_roles->removeElement($userRoles);
+    }
+
+    public function setUserRoles($roles) {
+        $this->user_roles = $roles;
+    }
+
+    /**
+     * Get user_roles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserRoles()
+    {
+        return $this->user_roles;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getRoles()
+    {
+        return $this->user_roles->toArray(); //IMPORTANTE: el mecanismo de seguridad de Sf2 requiere ésto como un array
+    }
+
+    /**
+     * Compares this user to another to determine if they are the same.
+     *
+     * @param UserInterface $user The user
+     * @return boolean True if equal, false othwerwise.
+     */
+    public function equals(UserInterface $user) {
+        return md5($this->getUsername()) == md5($user->getUsername());
+ 
+    }
+
+    /**
+     * Set empleado
+     *
+     * @param \proyBundle\Entity\Empleado $empleado
+     * @return User
+     */
+    public function setEmpleado(\proyBundle\Entity\Empleado $empleado = null)
+    {
+        $this->empleado = $empleado;
+
+        return $this;
+    }
+
+    /**
+     * Get empleado
+     *
+     * @return \proyBundle\Entity\Empleado 
+     */
+    public function getEmpleado()
+    {
+        return $this->empleado;
+    }
+}

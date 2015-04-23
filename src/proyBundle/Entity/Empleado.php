@@ -25,20 +25,6 @@ class Empleado
     /**
      * @var string
      *
-     * @ORM\Column(name="user", type="string", length=10)
-     */
-    private $user;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=50)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nombre", type="string", length=100)
      */
     private $nombre;
@@ -98,6 +84,12 @@ class Empleado
     */
     protected $visitas;
 
+    /**
+     * @ORM\OneToOne(targetEntity="User", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     **/
+    private $user;
+
 
     /**
      * Get id
@@ -107,52 +99,6 @@ class Empleado
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set user
-     *
-     * @param string $user
-     * @return Empleado
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return string 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Empleado
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
@@ -389,5 +335,28 @@ class Empleado
     public function __toString()
     {
         return $this->getNombre() . " " . $this->getApellido()." - ".$this->getCargo();
+    }
+
+    /**
+     * Set user
+     *
+     * @param \proyBundle\Entity\User $user
+     * @return Empleado
+     */
+    public function setUser(\proyBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \proyBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

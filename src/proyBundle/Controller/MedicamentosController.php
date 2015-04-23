@@ -9,10 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use proyBundle\Entity\Medicamentos;
 use proyBundle\Form\MedicamentosType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Medicamentos controller.
- *
  * @Route("/medicamentos")
  */
 class MedicamentosController extends Controller

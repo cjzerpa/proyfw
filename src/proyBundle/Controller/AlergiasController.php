@@ -9,10 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use proyBundle\Entity\Alergias;
 use proyBundle\Form\AlergiasType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Alergias controller.
- *
  * @Route("/alergias")
  */
 class AlergiasController extends Controller

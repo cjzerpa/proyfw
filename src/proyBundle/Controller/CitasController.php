@@ -9,10 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use proyBundle\Entity\Citas;
 use proyBundle\Form\CitasType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Citas controller.
- *
  * @Route("/citas")
  */
 class CitasController extends Controller

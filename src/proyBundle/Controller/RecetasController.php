@@ -9,10 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use proyBundle\Entity\Recetas;
 use proyBundle\Form\RecetasType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Recetas controller.
- *
  * @Route("/recetas")
  */
 class RecetasController extends Controller

@@ -11,10 +11,10 @@ use proyBundle\Entity\Visitas;
 use proyBundle\Entity\Recetas;
 use proyBundle\Entity\Referencias;
 use proyBundle\Form\VisitasType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Visitas controller.
- *
  * @Route("/visitas")
  */
 class VisitasController extends Controller

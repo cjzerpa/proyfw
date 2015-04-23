@@ -9,10 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use proyBundle\Entity\NumerosPaciente;
 use proyBundle\Form\NumerosPacienteType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * NumerosPaciente controller.
- *
  * @Route("/numerospaciente")
  */
 class NumerosPacienteController extends Controller

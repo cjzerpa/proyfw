@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Role list</h1>
+
+    <div class="row top-buffer">
+        <div class="span3">
+            <a href="{{ path('role_new') }}" class="btn btn-large btn-block btn-primary">New role</a>
+        </div>
+    </div>
+
+    <div class="row top-buffer">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('role_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.name }}</td>
+                    <td>
+                    <ul>
+                        <div class="span2">
+                            <a href="{{ path('role_show', { 'id': entity.id }) }}" class="btn btn-large btn-block btn-default">View</a>
+                        </div>
+                        <div class="span2">
+                            <a href="{{ path('role_edit', { 'id': entity.id }) }}" class="btn btn-large btn-block btn-inverse">Edit</a>
+                        </div>
+                    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}

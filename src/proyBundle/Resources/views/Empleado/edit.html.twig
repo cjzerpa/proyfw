@@ -1,26 +1,16 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Editar - Empleado{% endblock %}
-
-
 {% block body -%}
-    <h1 align=center>Editar Empleado</h1>
+    <h1>Empleado edit</h1>
 
-    {{ form(delete_form) }}
-    
-    <div align=right>
-        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
-    </div>
-    
-    <br><br>
-    
     {{ form(edit_form) }}
 
         <ul class="record_actions">
-             <li>
-                 <a href="{{ path('empleado') }}">
-                     <br><br>Ir a lista de empleados
-                </a>
-            </li>
-        </ul>
+    <li>
+        <a href="{{ path('empleado') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
 {% endblock %}

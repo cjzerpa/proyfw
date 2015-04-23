@@ -11,10 +11,10 @@ use proyBundle\Entity\HistoriaClinica;
 use proyBundle\Entity\Medicamentos;
 use proyBundle\Entity\Alergias;
 use proyBundle\Form\HistoriaClinicaType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * HistoriaClinica controller.
- *
  * @Route("/historiaclinica")
  */
 class HistoriaClinicaController extends Controller

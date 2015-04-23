@@ -11,10 +11,10 @@ use proyBundle\Entity\Paciente;
 use proyBundle\Entity\NumerosPaciente;
 use proyBundle\Entity\ContactoEmergencia;
 use proyBundle\Form\PacienteType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Paciente controller.
- *
  * @Route("/paciente")
  */
 class PacienteController extends Controller

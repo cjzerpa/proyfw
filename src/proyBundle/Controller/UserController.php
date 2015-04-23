@@ -7,21 +7,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use proyBundle\Entity\ContactoEmergencia;
-use proyBundle\Form\ContactoEmergenciaType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use proyBundle\Entity\User;
+use proyBundle\Form\UserType;
 
 /**
- * ContactoEmergencia controller.
- * @Route("/contactoemergencia")
+ * User controller.
+ *
+ * @Route("/user")
+ * @Security("has_role('ROLE_ADMIN')")
  */
-class ContactoEmergenciaController extends Controller
+class UserController extends Controller
 {
 
     /**
-     * Lists all ContactoEmergencia entities.
+     * Lists all User entities.
      *
-     * @Route("/", name="contactoemergencia")
+     * @Route("/", name="user")
      * @Method("GET")
      * @Template()
      */
@@ -29,22 +30,22 @@ class ContactoEmergenciaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('proyBundle:ContactoEmergencia')->findAll();
+        $entities = $em->getRepository('proyBundle:User')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new ContactoEmergencia entity.
+     * Creates a new User entity.
      *
-     * @Route("/", name="contactoemergencia_create")
+     * @Route("/", name="user_create")
      * @Method("POST")
-     * @Template("proyBundle:ContactoEmergencia:new.html.twig")
+     * @Template("proyBundle:User:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new ContactoEmergencia();
+        $entity = new User();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -53,7 +54,7 @@ class ContactoEmergenciaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('paciente_show', array('id' => $entity->getPaciente()->getId())));
+            return $this->redirect($this->generateUrl('user_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,34 +64,34 @@ class ContactoEmergenciaController extends Controller
     }
 
     /**
-     * Creates a form to create a ContactoEmergencia entity.
+     * Creates a form to create a User entity.
      *
-     * @param ContactoEmergencia $entity The entity
+     * @param User $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(ContactoEmergencia $entity)
+    private function createCreateForm(User $entity)
     {
-        $form = $this->createForm(new ContactoEmergenciaType(), $entity, array(
-            'action' => $this->generateUrl('contactoemergencia_create'),
+        $form = $this->createForm(new UserType(), $entity, array(
+            'action' => $this->generateUrl('user_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Guardar', 'attr'=>array('class'=>'btn btn-primary entity-submit pull-left')));
+        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
 
     /**
-     * Displays a form to create a new ContactoEmergencia entity.
+     * Displays a form to create a new User entity.
      *
-     * @Route("/new", name="contactoemergencia_new")
+     * @Route("/new", name="user_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new ContactoEmergencia();
+        $entity = new User();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -100,9 +101,9 @@ class ContactoEmergenciaController extends Controller
     }
 
     /**
-     * Finds and displays a ContactoEmergencia entity.
+     * Finds and displays a User entity.
      *
-     * @Route("/{id}", name="contactoemergencia_show")
+     * @Route("/{id}", name="user_show")
      * @Method("GET")
      * @Template()
      */
@@ -110,10 +111,10 @@ class ContactoEmergenciaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('proyBundle:ContactoEmergencia')->find($id);
+        $entity = $em->getRepository('proyBundle:User')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find ContactoEmergencia entity.');
+            throw $this->createNotFoundException('Unable to find User entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -125,9 +126,9 @@ class ContactoEmergenciaController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing ContactoEmergencia entity.
+     * Displays a form to edit an existing User entity.
      *
-     * @Route("/{id}/edit", name="contactoemergencia_edit")
+     * @Route("/{id}/edit", name="user_edit")
      * @Method("GET")
      * @Template()
      */
@@ -135,10 +136,10 @@ class ContactoEmergenciaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('proyBundle:ContactoEmergencia')->find($id);
+        $entity = $em->getRepository('proyBundle:User')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find ContactoEmergencia entity.');
+            throw $this->createNotFoundException('Unable to find User entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -152,38 +153,38 @@ class ContactoEmergenciaController extends Controller
     }
 
     /**
-    * Creates a form to edit a ContactoEmergencia entity.
+    * Creates a form to edit a User entity.
     *
-    * @param ContactoEmergencia $entity The entity
+    * @param User $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(ContactoEmergencia $entity)
+    private function createEditForm(User $entity)
     {
-        $form = $this->createForm(new ContactoEmergenciaType(), $entity, array(
-            'action' => $this->generateUrl('contactoemergencia_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new UserType(), $entity, array(
+            'action' => $this->generateUrl('user_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Actualizar', 'attr'=>array('class'=>'btn btn-primary entity-submit pull-left')));
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
     /**
-     * Edits an existing ContactoEmergencia entity.
+     * Edits an existing User entity.
      *
-     * @Route("/{id}", name="contactoemergencia_update")
+     * @Route("/{id}", name="user_update")
      * @Method("PUT")
-     * @Template("proyBundle:ContactoEmergencia:edit.html.twig")
+     * @Template("proyBundle:User:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('proyBundle:ContactoEmergencia')->find($id);
+        $entity = $em->getRepository('proyBundle:User')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find ContactoEmergencia entity.');
+            throw $this->createNotFoundException('Unable to find User entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -193,7 +194,7 @@ class ContactoEmergenciaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('contactoemergencia_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('user_edit', array('id' => $id)));
         }
 
         return array(
@@ -203,9 +204,9 @@ class ContactoEmergenciaController extends Controller
         );
     }
     /**
-     * Deletes a ContactoEmergencia entity.
+     * Deletes a User entity.
      *
-     * @Route("/{id}", name="contactoemergencia_delete")
+     * @Route("/{id}", name="user_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -215,21 +216,21 @@ class ContactoEmergenciaController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('proyBundle:ContactoEmergencia')->find($id);
+            $entity = $em->getRepository('proyBundle:User')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find ContactoEmergencia entity.');
+                throw $this->createNotFoundException('Unable to find User entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('contactoemergencia'));
+        return $this->redirect($this->generateUrl('user'));
     }
 
     /**
-     * Creates a form to delete a ContactoEmergencia entity by id.
+     * Creates a form to delete a User entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -238,12 +239,10 @@ class ContactoEmergenciaController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('contactoemergencia_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('user_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar contacto', 'attr'=>array('class'=>'btn btn-warning entity-submit pull-left')))
+            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
-
-    
 }

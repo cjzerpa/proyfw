@@ -1,21 +1,14 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Empleado{% endblock %}
-
-
 {% block body -%}
-    <h1 align=center>Empleado</h1>
-    
-    {{ form(delete_form) }}
-  
-    <div align=right>
-        {{ "now"|date("d/m/Y - H:i ", "America/Caracas")}}
-    </div>
-    
-    <br><br>
-    
-    <table class="table table-bordered" cellspacing="0" cellpadding="0">
+    <h1>Empleado</h1>
+
+    <table class="record_properties">
         <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
             <tr>
                 <th>Nombre</th>
                 <td>{{ entity.nombre }}</td>
@@ -25,16 +18,11 @@
                 <td>{{ entity.apellido }}</td>
             </tr>
             <tr>
-                <th>User</th>
-                <td>{{ entity.user }}</td>
-            </tr>
-            
-            <tr>
-                <th>Fecha de nacimiento</th>
-                <td>{{ entity.fechaNacimiento|date('Y-m-d') }}</td>
+                <th>Fechanacimiento</th>
+                <td>{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Numero de seguro</th>
+                <th>Numeroseguro</th>
                 <td>{{ entity.numeroSeguro }}</td>
             </tr>
             <tr>
@@ -46,30 +34,27 @@
                 <td>{{ entity.telefono }}</td>
             </tr>
             <tr>
-                <th>Fecha inicio</th>
-                <td>{{ entity.fechaInicio|date('Y-m-d') }}</td>
+                <th>Fechainicio</th>
+                <td>{{ entity.fechaInicio|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
                 <th>Cargo</th>
                 <td>{{ entity.cargo }}</td>
             </tr>
         </tbody>
-        <br><br>
     </table>
 
         <ul class="record_actions">
-
-        <li>
-        <a href="{{ path('empleado_edit', { 'id': entity.id }) }}">
-            Editar
+    <li>
+        <a href="{{ path('empleado') }}">
+            Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('empleado') }}">
-            Volver a lista de empleados
+        <a href="{{ path('empleado_edit', { 'id': entity.id }) }}">
+            Edit
         </a>
     </li>
-    
-    
+    <li>{{ form(delete_form) }}</li>
 </ul>
 {% endblock %}
